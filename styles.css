@@ -1,0 +1,233 @@
+
+
+/* Animated gradient background for header */
+header {
+  background: linear-gradient(-45deg, #9d52ee, #3caee7, #23a6d5, #4244b5);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Glass morphism effect for nav bar */
+nav {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+}
+
+/* Animated underline for nav links */
+nav ul li a {
+  position: relative;
+  padding-bottom: 5px;
+}
+
+nav ul li a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--secondary);
+  transition: width 0.3s ease-out;
+}
+
+nav ul li a:hover::after {
+  width: 100%;
+}
+
+/* 3D text effect for the main heading */
+.hero-content h1 {
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.3),
+               1px 2px 1px rgba(0,0,0,0.3),
+               1px 3px 1px rgba(0,0,0,0.3),
+               1px 4px 1px rgba(0,0,0,0.3),
+               1px 5px 1px rgba(0,0,0,0.2),
+               1px 6px 1px rgba(0,0,0,0.1),
+               1px 10px 30px rgba(0,0,0,0.4);
+}
+
+/* Animated skill cards */
+.skill-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-card::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 40px;
+  height: 40px;
+  background-color: var(--secondary);
+  opacity: 0.4;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: transform 0.6s;
+}
+
+.skill-card:hover::before {
+  transform: scale(12);
+  opacity: 0.05;
+}
+
+/* Animated border for project cards */
+.project-card {
+  position: relative;
+  z-index: 1;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 10px;
+  padding: 2px;
+  background: linear-gradient(45deg, var(--secondary), var(--primary));
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+/* Cool image hover effects for gallery */
+.gallery-item {
+  transition: transform 0.5s;
+}
+
+.gallery-item:hover {
+  z-index: 1;
+  transform: scale(1.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.gallery-item img {
+  filter: grayscale(40%);
+  transition: filter 0.5s, transform 0.5s;
+}
+
+.gallery-item:hover img {
+  filter: grayscale(0%);
+}
+
+/* Animated input fields */
+.form-group input,
+.form-group textarea {
+  border: 2px solid transparent;
+  background-color: rgba(255, 255, 255, 0.9);
+  transition: border 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border: 2px solid var(--primary);
+  box-shadow: 0 0 15px rgba(45, 66, 99, 0.2);
+  transform: translateY(-3px);
+  outline: none;
+}
+
+/* Submit button with hover animation */
+button {
+  position: relative;
+  overflow: hidden;
+  transition: color 0.3s;
+  z-index: 1;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: var(--secondary);
+  transition: left 0.3s;
+  z-index: -1;
+}
+
+button:hover::before {
+  left: 0;
+}
+
+/* Light particles background for the about section */
+#about {
+  position: relative;
+  overflow: hidden;
+}
+
+#about::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle at 50% 50%, rgba(200, 75, 49, 0.1) 0%, transparent 8%),
+                     radial-gradient(circle at 40% 80%, rgba(45, 66, 99, 0.1) 0%, transparent 8%);
+  background-size: 80px 80px;
+  background-position: 0 0;
+  animation: particles 4s linear infinite;
+  z-index: -1;
+}
+
+@keyframes particles {
+  0% { background-position: 0 0; }
+  100% { background-position: 80px 80px; }
+}
+
+/* Horizontal scroll effect for gallery on smaller screens */
+@media (max-width: 768px) {
+  .gallery {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 20px;
+  }
+  
+  .gallery-item {
+    flex: 0 0 auto;
+    width: 85%;
+    margin-right: 15px;
+    scroll-snap-align: center;
+  }
+  
+  .gallery-item:last-child {
+    margin-right: 0;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary);
+}
